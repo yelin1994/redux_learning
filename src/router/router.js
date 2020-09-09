@@ -3,7 +3,7 @@ import { createBrowserHistory } from 'history'
 import { match as matchPath } from 'path-to-regexp'
 const history = createBrowserHistory();
 
-matchPath('/about/:id')
+// matchPath('/about/:id')
 // const matchPath = () => true;
 export class Route extends React.Component {
     componentWillMount() {
@@ -16,6 +16,7 @@ export class Route extends React.Component {
         const {
             path,
             component: Component, 
+            render
         } = this.props;
         const pathname = window.location.pathname;
         const matcher = matchPath(path);
@@ -23,6 +24,9 @@ export class Route extends React.Component {
         if (!match) return null;
         if (Component) {
             return <Component match={match}></Component> // 所有的组件相当于取到一个match
+        }
+        if (render) {
+            return render({match});
         }
         return null;
     }

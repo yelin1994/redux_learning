@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -10,7 +11,7 @@ export class Home extends React.Component {
         <div>hello</div>
 
         return (
-            <div>
+            <div style={{border: 'solid 1px' }}>
                 Home,
                 {children}
             </div>
